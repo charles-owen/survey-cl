@@ -10,8 +10,7 @@
     }
   ],
   "require" : {
-    "cl/course": "^2.0",
-    "ext-db": "*"
+    "cl/course": "^2.0"
   },
   "autoload":{
     "psr-4": {

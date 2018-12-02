@@ -12,5 +12,10 @@
   "devDependencies": {},
   "dependencies": {
     "course-cl": ">=0.0.1"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "2.0.x-dev"
+    }
   }
 }

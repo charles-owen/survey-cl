@@ -9,6 +9,10 @@
       "email": "cbowen@msu.edu"
     }
   ],
+  "require" : {
+    "cl/course": "^2.0",
+    "ext-db": "*"
+  },
   "autoload":{
     "psr-4": {
       "CL\\Survey\\": "src/Survey"

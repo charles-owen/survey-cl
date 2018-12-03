@@ -1,4 +1,13 @@
+/**
+ * @file
+ * The main Survey system entry point
+ */
 
-import {TrelloFactory} from './js/TrelloFactory';
+//
+// Install the console components
+//
+import {SurveyConsole} from './js/Console/SurveyConsole';
 
-TrelloFactory.create(Site.Site);
+if(Site.Console !== undefined) {
+	SurveyConsole.setup(Site.Console);
+}

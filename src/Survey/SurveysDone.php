@@ -32,10 +32,11 @@ class SurveysDone extends Table {
 	public function createSQL() {
 		$query = <<<SQL
 CREATE TABLE IF NOT EXISTS `$this->tablename` (
-  memberid int(11) NOT NULL, 
-  `tag`    varchar(30) NOT NULL, 
-  surveyid int(11), 
-  `date`   datetime NOT NULL, 
+  memberid  int(11) NOT NULL, 
+  `tag`     varchar(30) NOT NULL, 
+  surveyid  int(11), 
+  time      datetime NOT NULL, 
+  surveyid2 int(11), 
   PRIMARY KEY (memberid, 
   `tag`));
 
@@ -78,7 +79,7 @@ SQL;
 		$pdo = $this->pdo;
 
 		$sql = <<<SQL
-insert into $this->tablename(memberid, tag, surveyid, date) values(?, ?, ?, ?)
+insert into $this->tablename(memberid, tag, surveyid, time) values(?, ?, ?, ?)
 SQL;
 
 		try {
@@ -100,7 +101,7 @@ SQL;
 		$pdo = $this->pdo;
 
 		$sql = <<<SQL
-select surveyid, date from $this->tablename where memberid=? and tag=?
+select surveyid, time from $this->tablename where memberid=? and tag=?
 SQL;
 
 		$stmt = $pdo->prepare($sql);
@@ -113,7 +114,7 @@ SQL;
 			return null;
 		}
 
-		return ['surveyId'=>($row['surveyid']!==null ? +$row['surveyid'] : null), 'time'=>strtotime($row['date'])];
+		return ['surveyId'=>($row['surveyid']!==null ? +$row['surveyid'] : null), 'time'=>strtotime($row['time'])];
 	}
 
 }

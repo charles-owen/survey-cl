@@ -8,6 +8,6 @@
 //
 import {SurveyConsole} from './js/Console/SurveyConsole';
 
-if(Site.Console !== undefined) {
-	SurveyConsole.setup(Site.Console);
+if(Site.Site.console !== undefined) {
+	SurveyConsole.setup(Site.Site.console);
 }

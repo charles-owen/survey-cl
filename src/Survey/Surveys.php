@@ -72,6 +72,13 @@ SQL;
 		return $this->pdo->lastInsertId();
 	}
 
+	/**
+	 * Get all surveys for a given semester/section/tag
+	 * @param string $tag
+	 * @param string $semester
+	 * @param string $section
+	 * @return array of all data.
+	 */
 	public function get($tag, $semester, $section) {
 		$sql = <<<SQL
 select * from $this->tablename

@@ -10,7 +10,7 @@
     }
   ],
   "require" : {
-    "cl/course": "^2.0"
+    "cl/course": "^2.1"
   },
   "autoload":{
     "psr-4": {
@@ -25,7 +25,7 @@
   ],
   "extra": {
     "branch-alias": {
-      "dev-master": "2.0.x-dev"
+      "dev-master": "2.1.x-dev"
     }
   }
 }

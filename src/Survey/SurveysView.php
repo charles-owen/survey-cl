@@ -105,7 +105,7 @@ HTML;
 			return $this->surveys[$tag];
 		}
 
-		return Survey::load($this->site, $tag);
+		return Survey::load($this->site, $this->user, $tag);
 	}
 
 	private $surveys = [];

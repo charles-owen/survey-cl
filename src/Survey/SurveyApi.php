@@ -66,7 +66,7 @@ class SurveyApi extends \CL\Users\Api\Resource {
 			}
 
 			// Get the survey
-			$survey = Survey::load($site, $tag);
+			$survey = Survey::load($site, $user, $tag);
 			if($survey === null) {
 				throw new APIException("Survey $tag does not exist");
 			}

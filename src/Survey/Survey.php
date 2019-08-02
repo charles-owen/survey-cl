@@ -164,17 +164,34 @@ HTML;
 	}
 
 	/**
-	 * Load a survey from the standard surveys location (config/survey/:tag)
+	 * Load a survey from the standard surveys location (config/survey.{semester}.{section}/:tag)
+     *
+     * Alternatively, the default survey location is: config/survey/:tag
+     *
 	 * @param Site $site
 	 * @param $tag
 	 * @return mixed|null
 	 */
-	public static function load(Site $site, $tag) {
+	public static function load(Site $site, User $user, $tag) {
 		if(!Tags::validate($tag)) {
 			return null;
 		}
 
-		$path = $site->rootDir . '/' . $site->config . '/survey/' . $tag . '.php';
+		if($user->member === null) {
+		    return null;
+        }
+
+		$semester = $user->member->semesterLC;
+		$section = $user->member->sectionId;
+
+        $path = $site->rootDir . '/' . $site->config . "/survey.$semester.$section/" . $tag . '.php';
+        if(!file_exists($path)) {
+            $path = $site->rootDir . '/' . $site->config . '/survey/' . $tag . '.php';
+            if(!file_exists($path)) {
+                return null;
+            }
+        }
+
 		$survey = @include($path);
 		if($survey === false) {
 			return null;

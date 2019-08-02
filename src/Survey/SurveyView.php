@@ -25,7 +25,7 @@ class SurveyView extends \CL\Course\View {
 		parent::__construct($site);
 
 		$this->tag = strip_tags($properties['tag']);
-		$this->survey = Survey::load($site, $this->tag);
+		$this->survey = Survey::load($site, $this->user, $this->tag);
 
 		if($this->user->role() !== Member::STUDENT &&
 			!$this->user->atLeast(Member::INSTRUCTOR)) {
